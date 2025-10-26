@@ -64,7 +64,6 @@ class TestTaxiOrderPreparation:
             assert fast_price != optimal_price, "Price should change when switching route types"
             assert fast_duration != optimal_duration, "Duration should change when switching route types"
 
-    @pytest.mark.xfail(reason="Active tab does not change when switching to Custom route")
     @allure.title("Check active tab change when switching to Custom route")
     @allure.description("Verify that active tab changes when switching from Fast to Custom route type")
     @allure.severity(allure.severity_level.NORMAL)
