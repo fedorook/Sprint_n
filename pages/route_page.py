@@ -55,11 +55,13 @@ class RoutePage(BasePage):
     @allure.step("Click Drive transportation option")
     def click_drive_option(self):
         """Click on Drive transportation icon"""
+        self.find_element_with_wait(RoutePageLocators.DRIVE_ICON)
         self.click_element(RoutePageLocators.DRIVE_ICON)
 
     @allure.step("Check Book button is active for Drive")
     def check_book_button_active(self):
         """Check that Book button is displayed and clickable for Drive option"""
+        self.find_element_with_wait(RoutePageLocators.BOOK_BUTTON)
         return (self.is_element_displayed(RoutePageLocators.BOOK_BUTTON) and
                 self.check_element_is_clickable(RoutePageLocators.BOOK_BUTTON))
 
