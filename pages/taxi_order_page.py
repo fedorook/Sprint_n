@@ -1,4 +1,5 @@
 import allure
+from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from locators.taxi_order_page_locators import TaxiOrderPageLocators
 from test_data import TAXI_TARIFF_DESCRIPTIONS
@@ -17,18 +18,30 @@ class TaxiOrderPage(BasePage):
             TaxiOrderPageLocators.CONSOLATION_TARIFF,
             TaxiOrderPageLocators.GLOSSY_TARIFF
         ]
+        for tariff in tariffs:
+            self.find_element_with_wait(tariff)
         return all(self.is_element_displayed(tariff) for tariff in tariffs)
 
     @allure.step("Check if one tariff is active")
     def check_one_tariff_is_active(self):
         """Check that one of the tariffs has active state"""
-        tariff_cards = self.wait_for_elements(TaxiOrderPageLocators.ALL_TARIFF_CARDS)
-        active_tariffs = []
-        for card in tariff_cards:
-            class_attr = card.get_attribute("class")
+        tariffs = [
+            TaxiOrderPageLocators.WORKING_TARIFF,
+            TaxiOrderPageLocators.SLEEPY_TARIFF,
+            TaxiOrderPageLocators.VACATION_TARIFF,
+            TaxiOrderPageLocators.TALKATIVE_TARIFF,
+            TaxiOrderPageLocators.CONSOLATION_TARIFF,
+            TaxiOrderPageLocators.GLOSSY_TARIFF
+        ]
+        active_tariffs = 0
+        for tariff in tariffs:
+            self.find_element_with_wait(tariff)
+            tariff_element = self.driver.find_element(*tariff)
+            parent_card = tariff_element.find_element(By.XPATH, "./..")
+            class_attr = parent_card.get_attribute("class")
             if "active" in class_attr:
-                active_tariffs.append(card)
-        return len(active_tariffs) > 0
+                active_tariffs += 1
+        return active_tariffs > 0
 
     @allure.step("Click on tariff")
     def click_tariff(self, tariff_name):
