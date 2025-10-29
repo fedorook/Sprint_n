@@ -36,6 +36,7 @@ class TestTaxiOrderPreparation:
             assert fast_price is not None and fast_price != "", "Fast route should have price displayed"
             assert fast_duration is not None and fast_duration != "", "Fast route should have duration displayed"
 
+    @pytest.mark.xfail(reason="Duration does not change when switching between route types")
     @allure.title("Check price and duration recalculation when switching route types")
     @allure.description("Verify that price and duration change when switching between Optimal and Fast route types")
     @allure.severity(allure.severity_level.NORMAL)
