@@ -82,6 +82,8 @@ class TaxiOrderPage(BasePage):
         payment = self.is_element_displayed(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD)
         comment = self.is_element_displayed(TaxiOrderPageLocators.COMMENT_FIELD)
         requirements = self.is_element_displayed(TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD)
+
+        print(f"DEBUG: phone={phone}, payment={payment}, comment={comment}, requirements={requirements}")
         return phone and payment and comment and requirements
 
     @allure.step("Click order button")
