@@ -30,6 +30,8 @@ class OrderWaitingPage(BasePage):
     @allure.step("Click laptop table checkbox")
     def click_laptop_table_checkbox(self):
         """Click the 'Столик для ноутбука' checkbox"""
+        self.scroll_to_element(OrderWaitingPageLocators.ORDER_REQUIREMENTS)
+        self.click_element(OrderWaitingPageLocators.ORDER_REQUIREMENTS)
         self.click_element(OrderWaitingPageLocators.LAPTOP_TABLE_CHECKBOX)
 
     @allure.step("Click order now button")
