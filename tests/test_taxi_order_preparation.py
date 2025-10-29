@@ -126,5 +126,8 @@ class TestTaxiOrderPreparation:
         with allure.step("Click on Custom tab"):
             route_page.click_route_type("custom")
 
+        with allure.step("Select Drive transportation option"):
+            route_page.click_drive_option()
+
         with allure.step("Verify that Book button is active for Drive option"):
             assert route_page.check_book_button_active(), "Book button should be active for Drive option in Custom route type"
