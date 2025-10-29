@@ -30,11 +30,6 @@ class RoutePage(BasePage):
         if route_type in route_locators:
             self.click_element(route_locators[route_type])
 
-    @allure.step("Check if route tab is active")
-    def check_route_tab_active(self, route_type):
-        """Check if specific route tab is active (implementation depends on actual CSS classes)"""
-        # This would need actual CSS class checking based on the app's implementation
-        return True  # Placeholder
 
     @allure.step("Check transportation types are active")
     def check_transportation_types_active(self):
