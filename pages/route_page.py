@@ -8,9 +8,13 @@ class RoutePage(BasePage):
     @allure.step("Check if route selection block is displayed")
     def check_route_selection_block_displayed(self):
         """Check that route selection block appears"""
-        return (self.is_element_displayed(RoutePageLocators.OPTIMAL_TAB) and
-                self.is_element_displayed(RoutePageLocators.FAST_TAB) and
-                self.is_element_displayed(RoutePageLocators.CUSTOM_TAB))
+        try:
+            self.wait_for_element_extended(RoutePageLocators.OPTIMAL_TAB, 10)
+            return (self.is_element_displayed(RoutePageLocators.OPTIMAL_TAB) and
+                    self.is_element_displayed(RoutePageLocators.FAST_TAB) and
+                    self.is_element_displayed(RoutePageLocators.CUSTOM_TAB))
+        except:
+            return False
 
     @allure.step("Check same address route text")
     def check_same_address_route_text(self):
@@ -42,12 +46,16 @@ class RoutePage(BasePage):
     @allure.step("Check transportation types are active")
     def check_transportation_types_active(self):
         """Check that all transportation icons are displayed when Custom tab is selected"""
-        return (self.is_element_displayed(RoutePageLocators.CAR_ICON) and
-                self.is_element_displayed(RoutePageLocators.WALK_ICON) and
-                self.is_element_displayed(RoutePageLocators.TAXI_ICON_ACTIVE) and
-                self.is_element_displayed(RoutePageLocators.BIKE_ICON) and
-                self.is_element_displayed(RoutePageLocators.SCOOTER_ICON) and
-                self.is_element_displayed(RoutePageLocators.DRIVE_ICON))
+        try:
+            self.wait_for_element_extended(RoutePageLocators.CAR_ICON, 10)
+            return (self.is_element_displayed(RoutePageLocators.CAR_ICON) and
+                    self.is_element_displayed(RoutePageLocators.WALK_ICON) and
+                    self.is_element_displayed(RoutePageLocators.TAXI_ICON_ACTIVE) and
+                    self.is_element_displayed(RoutePageLocators.BIKE_ICON) and
+                    self.is_element_displayed(RoutePageLocators.SCOOTER_ICON) and
+                    self.is_element_displayed(RoutePageLocators.DRIVE_ICON))
+        except:
+            return False
 
     @allure.step("Check Call Taxi button is active")
     def check_call_taxi_button_active(self):
