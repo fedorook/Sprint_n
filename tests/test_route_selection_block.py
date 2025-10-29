@@ -1,6 +1,5 @@
 import allure
 
-
 @allure.epic("Yandex Routes Testing")
 @allure.feature("Route Selection Block Display")
 class TestRouteSelectionBlock:

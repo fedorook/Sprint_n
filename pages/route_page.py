@@ -15,9 +15,12 @@ class RoutePage(BasePage):
     @allure.step("Check same address route text")
     def check_same_address_route_text(self):
         """Check that 'Авто Бесплатно' and 'В пути 0 мин.' are displayed"""
-        free_auto_displayed = self.is_element_displayed(RoutePageLocators.FREE_AUTO_TEXT)
-        zero_minutes_displayed = self.is_element_displayed(RoutePageLocators.ZERO_MINUTES_TEXT)
-        return free_auto_displayed and zero_minutes_displayed
+        try:
+            self.wait_for_element_extended(RoutePageLocators.FREE_AUTO_TEXT, 10)
+            self.wait_for_element_extended(RoutePageLocators.ZERO_MINUTES_TEXT, 10)
+            return True
+        except:
+            return False
 
     @allure.step("Click on route type tab")
     def click_route_type(self, route_type):
@@ -49,8 +52,12 @@ class RoutePage(BasePage):
     @allure.step("Check Call Taxi button is active")
     def check_call_taxi_button_active(self):
         """Check that Call Taxi button is displayed and clickable"""
-        return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
-                self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
+        try:
+            self.wait_for_element_extended(RoutePageLocators.CALL_TAXI_BUTTON, 10)
+            return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
+                    self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
+        except:
+            return False
 
     @allure.step("Click Drive transportation option")
     def click_drive_option(self):
@@ -83,9 +90,17 @@ class RoutePage(BasePage):
     @allure.step("Check route price visibility")
     def check_route_price_visibility(self):
         """Check that route price is displayed"""
-        return self.is_element_displayed(RoutePageLocators.PRICE)
+        try:
+            self.wait_for_element_extended(RoutePageLocators.PRICE, 10)
+            return self.is_element_displayed(RoutePageLocators.PRICE)
+        except:
+            return False
 
     @allure.step("Check route duration visibility")
     def check_route_duration_visibility(self):
         """Check that route duration is displayed"""
-        return self.is_element_displayed(RoutePageLocators.DURATION)
+        try:
+            self.wait_for_element_extended(RoutePageLocators.DURATION, 10)
+            return self.is_element_displayed(RoutePageLocators.DURATION)
+        except:
+            return False
