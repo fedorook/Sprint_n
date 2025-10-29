@@ -23,7 +23,7 @@ class TaxiOrderPageLocators:
 
     # Order form fields
     PHONE_FIELD = (By.XPATH, "//div[contains(text(),'Телефон')]")
-    PAYMENT_METHOD_FIELD = (By.XPATH, "//div[contains(text(),'Способ оплаты')]")
+    PAYMENT_METHOD_FIELD = (By.XPATH, "//div[@class='head'][contains(text(),'Способ оплаты')]")
     COMMENT_FIELD = (By.XPATH, "//label[contains(text(),'Комментарий водителю...')]")
     ORDER_REQUIREMENTS_FIELD = (By.XPATH, "//div[contains(text(),'Требования к заказу')]")
 
