@@ -52,6 +52,11 @@ class RoutePage(BasePage):
         return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
                 self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
 
+    @allure.step("Click Drive transportation option")
+    def click_drive_option(self):
+        """Click on Drive transportation icon"""
+        self.click_element(RoutePageLocators.DRIVE_ICON)
+
     @allure.step("Check Book button is active for Drive")
     def check_book_button_active(self):
         """Check that Book button is displayed and clickable for Drive option"""

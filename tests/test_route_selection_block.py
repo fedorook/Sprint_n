@@ -70,6 +70,12 @@ class TestRouteSelectionBlock:
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
 
+        with allure.step("Click on Custom tab"):
+            route_page.click_route_type("custom")
+
+        with allure.step("Click on Drive transportation option"):
+            route_page.click_drive_option()
+
         with allure.step("Check that Book button is active for Drive"):
             assert route_page.check_book_button_active(), "Book button should be displayed and clickable for Drive option"
 
