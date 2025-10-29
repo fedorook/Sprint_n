@@ -1,6 +1,7 @@
 import allure
 from test_data import URL
 from locators.route_page_locators import RoutePageLocators
+from locators.main_page_locators import MainPageLocators
 
 
 @allure.epic("Yandex Routes Testing")
@@ -87,3 +88,29 @@ class TestRouteSelectionBlock:
 
         with allure.step("Check that same address route text is displayed"):
             assert route_page.check_same_address_route_text(), "Should display 'Авто Бесплатно' and 'В пути 0 мин.' for same addresses"
+
+    @allure.title("Check route price visibility for different addresses")
+    @allure.description("Verify that route price is displayed when entering two different preset addresses")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_route_price_visibility_different_addresses(self, driver, main_page, route_page):
+        with allure.step("Navigate to Yandex Routes page"):
+            driver.get(URL)
+
+        with allure.step("Enter different addresses in 'From' and 'To' fields"):
+            main_page.enter_different_addresses()
+
+        with allure.step("Check that route price is displayed"):
+            assert route_page.check_route_price_visibility(), "Route price should be displayed for different addresses"
+
+    @allure.title("Check route duration visibility for different addresses")
+    @allure.description("Verify that route duration is displayed when entering two different preset addresses")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_route_duration_visibility_different_addresses(self, driver, main_page, route_page):
+        with allure.step("Navigate to Yandex Routes page"):
+            driver.get(URL)
+
+        with allure.step("Enter different addresses in 'From' and 'To' fields"):
+            main_page.enter_different_addresses()
+
+        with allure.step("Check that route duration is displayed"):
+            assert route_page.check_route_duration_visibility(), "Route duration should be displayed for different addresses"

@@ -67,3 +67,13 @@ class RoutePage(BasePage):
     def get_route_duration(self):
         """Get the route duration text"""
         return self.get_text_from_element(RoutePageLocators.DURATION)
+
+    @allure.step("Check route price visibility")
+    def check_route_price_visibility(self):
+        """Check that route price is displayed"""
+        return self.is_element_displayed(RoutePageLocators.PRICE)
+
+    @allure.step("Check route duration visibility")
+    def check_route_duration_visibility(self):
+        """Check that route duration is displayed"""
+        return self.is_element_displayed(RoutePageLocators.DURATION)
