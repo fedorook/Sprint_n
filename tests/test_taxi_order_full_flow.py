@@ -79,6 +79,9 @@ class TestTaxiOrderFullFlow:
         with allure.step("Select Working tariff"):
             taxi_order_page.click_tariff("Рабочий")
 
+        with allure.step("Get price before order"):
+            price_before_order = order_details_page.get_tariff_price()
+
         with allure.step("Enable laptop table checkbox"):
             order_waiting_page.click_laptop_table_checkbox()
 
@@ -101,7 +104,8 @@ class TestTaxiOrderFullFlow:
             assert order_details_page.check_details_window_elements(), "Details window should display all required elements"
 
         with allure.step("Check price consistency"):
-            assert order_details_page.check_price_consistency(), "Price in details should match the tariff price"
+            price_in_details = order_details_page.get_price_from_details()
+            assert price_before_order == price_in_details, f"Price in details ({price_in_details}) should match the tariff price ({price_before_order})"
 
         with allure.step("Click Cancel button"):
             order_details_page.click_cancel_button()
