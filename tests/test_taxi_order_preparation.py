@@ -74,15 +74,13 @@ class TestTaxiOrderPreparation:
             main_page.enter_different_addresses()
 
         with allure.step("Verify Fast route is initially active"):
-            # This would need implementation of checking active tab state
-            pass
+            assert route_page.check_call_taxi_button_active(), "Call Taxi button should be active for Fast route"
 
         with allure.step("Click on Custom tab"):
             route_page.click_route_type("custom")
 
         with allure.step("Verify Custom route tab is now active"):
-            # This would need implementation of checking active tab state
-            assert True, "Active tab should change to Custom"
+            assert route_page.check_transportation_types_active(), "All transportation types should be active for Custom route"
 
     @allure.title("Check Custom tab activation and transportation types")
     @allure.description("Verify that switching to Custom route tab activates all transportation types")
