@@ -15,6 +15,7 @@ def driver():
     service = Service(ChromeDriverManager().install())
     chrome = webdriver.Chrome(service=service)
     chrome.maximize_window()
+    chrome.implicitly_wait(10)
     yield chrome
     chrome.quit()
 
