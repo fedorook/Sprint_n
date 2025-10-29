@@ -18,9 +18,12 @@ class TaxiOrderPage(BasePage):
             TaxiOrderPageLocators.CONSOLATION_TARIFF,
             TaxiOrderPageLocators.GLOSSY_TARIFF
         ]
-        for tariff in tariffs:
-            self.find_element_with_wait(tariff)
-        return all(self.is_element_displayed(tariff) for tariff in tariffs)
+        try:
+            for tariff in tariffs:
+                self.find_element_with_wait(tariff)
+            return True
+        except:
+            return False
 
     @allure.step("Check if one tariff is active")
     def check_one_tariff_is_active(self):
@@ -76,14 +79,18 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check order form fields are displayed")
     def check_order_form_fields_displayed(self):
         """Check that all order form fields are visible"""
-        self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)
         fields = [
             TaxiOrderPageLocators.PHONE_FIELD,
             TaxiOrderPageLocators.PAYMENT_METHOD_FIELD,
             TaxiOrderPageLocators.COMMENT_FIELD,
             TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD
         ]
-        return all(self.is_element_displayed(field) for field in fields)
+        try:
+            for field in fields:
+                self.find_element_with_wait(field)
+            return True
+        except:
+            return False
 
     @allure.step("Click order button")
     def click_order_button(self):

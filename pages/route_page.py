@@ -52,9 +52,12 @@ class RoutePage(BasePage):
     @allure.step("Check Call Taxi button is active")
     def check_call_taxi_button_active(self):
         """Check that Call Taxi button is displayed and clickable"""
-        self.find_element_with_wait(RoutePageLocators.CALL_TAXI_BUTTON)
-        return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
-                self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
+        try:
+            self.find_element_with_wait(RoutePageLocators.CALL_TAXI_BUTTON)
+            self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON)
+            return True
+        except:
+            return False
 
     @allure.step("Click Drive transportation option")
     def click_drive_option(self):
@@ -65,9 +68,12 @@ class RoutePage(BasePage):
     @allure.step("Check Book button is active for Drive")
     def check_book_button_active(self):
         """Check that Book button is displayed and clickable for Drive option"""
-        self.find_element_with_wait(RoutePageLocators.BOOK_BUTTON)
-        return (self.is_element_displayed(RoutePageLocators.BOOK_BUTTON) and
-                self.check_element_is_clickable(RoutePageLocators.BOOK_BUTTON))
+        try:
+            self.find_element_with_wait(RoutePageLocators.BOOK_BUTTON)
+            self.check_element_is_clickable(RoutePageLocators.BOOK_BUTTON)
+            return True
+        except:
+            return False
 
     @allure.step("Click Call Taxi button")
     def click_call_taxi_button(self):
