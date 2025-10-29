@@ -22,9 +22,13 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check if one tariff is active")
     def check_one_tariff_is_active(self):
         """Check that one of the tariffs has active state"""
-        # This would need to check for 'active' class or similar
-        # Implementation depends on actual CSS classes
-        return True  # Placeholder
+        tariff_cards = self.wait_for_elements(TaxiOrderPageLocators.ALL_TARIFF_CARDS)
+        active_tariffs = []
+        for card in tariff_cards:
+            class_attr = card.get_attribute("class")
+            if "active" in class_attr:
+                active_tariffs.append(card)
+        return len(active_tariffs) > 0
 
     @allure.step("Click on tariff")
     def click_tariff(self, tariff_name):
