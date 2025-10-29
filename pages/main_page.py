@@ -1,6 +1,7 @@
 import allure
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
+from locators.route_page_locators import RoutePageLocators
 from test_data import URL
 
 
@@ -31,6 +32,15 @@ class MainPage(BasePage):
     def enter_different_addresses(self):
         """Enter different preset addresses in from and to fields"""
         super().enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+        self.wait_for_route_calculation()
+
+    @allure.step("Wait for route calculation")
+    def wait_for_route_calculation(self):
+        """Wait for route to be calculated and route selection block to appear"""
+        try:
+            self.wait_for_element_extended(RoutePageLocators.OPTIMAL_TAB, 15)
+        except:
+            pass
 
     @allure.step("Enter same addresses")
     def enter_same_addresses(self):

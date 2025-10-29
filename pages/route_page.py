@@ -29,6 +29,11 @@ class RoutePage(BasePage):
         }
         if route_type in route_locators:
             self.click_element(route_locators[route_type])
+            if route_type == "custom":
+                try:
+                    self.wait_for_element_extended(RoutePageLocators.CAR_ICON, 10)
+                except:
+                    pass
 
 
     @allure.step("Check transportation types are active")
