@@ -78,19 +78,11 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check order form fields are displayed")
     def check_order_form_fields_displayed(self):
         """Check that all order form fields are visible"""
-        # Check phone field with visibility wait
-        self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)
-
-        # Check payment method with presence wait (not visibility)
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD))
-
-        fields = [
-            TaxiOrderPageLocators.PHONE_FIELD,
-            TaxiOrderPageLocators.PAYMENT_METHOD_FIELD,
-            TaxiOrderPageLocators.COMMENT_FIELD,
-            TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD
-        ]
-        return all(self.is_element_displayed(field) for field in fields)
+        phone = self.is_element_displayed(TaxiOrderPageLocators.PHONE_FIELD)
+        payment = self.is_element_displayed(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD)
+        comment = self.is_element_displayed(TaxiOrderPageLocators.COMMENT_FIELD)
+        requirements = self.is_element_displayed(TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD)
+        return phone and payment and comment and requirements
 
     @allure.step("Click order button")
     def click_order_button(self):
