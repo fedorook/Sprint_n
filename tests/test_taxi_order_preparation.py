@@ -1,7 +1,6 @@
 import allure
 import pytest
 from test_data import URL
-from locators.main_page_locators import MainPageLocators
 
 
 @allure.epic("Yandex Routes Testing")
@@ -16,7 +15,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Optimal tab"):
             route_page.click_route_type("optimal")
@@ -47,7 +46,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Get price and duration for Fast route"):
             fast_price = route_page.get_route_price()
@@ -72,7 +71,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Verify Fast route is initially active"):
             # This would need implementation of checking active tab state
@@ -93,7 +92,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Custom tab"):
             route_page.click_route_type("custom")
@@ -109,7 +108,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Fast tab"):
             route_page.click_route_type("fast")
@@ -125,7 +124,7 @@ class TestTaxiOrderPreparation:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Custom tab"):
             route_page.click_route_type("custom")

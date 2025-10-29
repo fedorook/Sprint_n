@@ -1,6 +1,5 @@
 import allure
 from test_data import URL
-from locators.main_page_locators import MainPageLocators
 from locators.route_page_locators import RoutePageLocators
 
 
@@ -16,7 +15,7 @@ class TestRouteSelectionBlock:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Check that route selection block is displayed"):
             assert route_page.check_route_selection_block_displayed(), "Route selection block should be displayed for different addresses"
@@ -29,7 +28,7 @@ class TestRouteSelectionBlock:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Check that all route tabs are visible"):
             assert route_page.check_route_selection_block_displayed(), "Route tabs (Optimal, Fast, Custom) should be visible"
@@ -42,7 +41,7 @@ class TestRouteSelectionBlock:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Custom tab"):
             route_page.click_route_type("custom")
@@ -58,7 +57,7 @@ class TestRouteSelectionBlock:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Check that Call Taxi button is active"):
             assert route_page.check_call_taxi_button_active(), "Call Taxi button should be displayed and clickable"
@@ -71,7 +70,7 @@ class TestRouteSelectionBlock:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Check that Book button is active for Drive"):
             assert route_page.check_book_button_active(), "Book button should be displayed and clickable for Drive option"

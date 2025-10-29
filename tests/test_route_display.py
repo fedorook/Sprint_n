@@ -1,6 +1,5 @@
 import allure
 from test_data import URL
-from locators.main_page_locators import MainPageLocators
 
 
 @allure.epic("Yandex Routes Testing")
@@ -15,7 +14,7 @@ class TestRouteDisplay:
             driver.get(URL)
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Check that route points A and B are displayed on the map"):
             assert main_page.check_route_points_displayed(), "Route start and end points should be visible on the map"

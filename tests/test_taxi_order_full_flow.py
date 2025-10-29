@@ -1,7 +1,6 @@
 import allure
 import pytest
 from test_data import URL, TAXI_TARIFF_DESCRIPTIONS
-from locators.main_page_locators import MainPageLocators
 
 
 @allure.epic("Yandex Routes Testing")
@@ -16,7 +15,7 @@ class TestTaxiOrderFullFlow:
             driver.get(URL)
 
         with allure.step("Enter different addresses"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
 
         with allure.step("Click on Fast route tab"):
             route_page.click_route_type("fast")
@@ -39,7 +38,7 @@ class TestTaxiOrderFullFlow:
             driver.get(URL)
 
         with allure.step("Enter different addresses and open taxi order form"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
             route_page.click_route_type("fast")
             route_page.click_call_taxi_button()
 
@@ -58,7 +57,7 @@ class TestTaxiOrderFullFlow:
             driver.get(URL)
 
         with allure.step("Enter different addresses and open taxi order form"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
             route_page.click_route_type("fast")
             route_page.click_call_taxi_button()
 
@@ -73,7 +72,7 @@ class TestTaxiOrderFullFlow:
             driver.get(URL)
 
         with allure.step("Enter different addresses and open taxi order form"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
             route_page.click_route_type("fast")
             route_page.click_call_taxi_button()
 
@@ -120,7 +119,7 @@ class TestTaxiOrderFullFlow:
             driver.get(URL)
 
         with allure.step("Complete order flow to waiting window"):
-            main_page.enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_different_addresses()
             route_page.click_route_type("fast")
             route_page.click_call_taxi_button()
             taxi_order_page.click_tariff("Рабочий")

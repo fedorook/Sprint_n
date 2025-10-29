@@ -17,3 +17,13 @@ class MainPage(BasePage):
         """Enter from and to addresses"""
         self.add_text_to_element(MainPageLocators.FROM_FIELD, from_address)
         self.add_text_to_element(MainPageLocators.TO_FIELD, to_address)
+
+    @allure.step("Enter different addresses")
+    def enter_different_addresses(self):
+        """Enter different preset addresses in from and to fields"""
+        super().enter_different_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+
+    @allure.step("Enter same addresses")
+    def enter_same_addresses(self):
+        """Enter same preset address in both from and to fields"""
+        super().enter_same_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
