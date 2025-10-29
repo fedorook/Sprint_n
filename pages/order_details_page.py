@@ -8,19 +8,23 @@ class OrderDetailsPage(BasePage):
     @allure.step("Get tariff price")
     def get_tariff_price(self):
         """Get the price displayed on the tariff card"""
-        return self.get_text_from_element(OrderDetailsPageLocators.TARIFF_PRICE)
+        price = self.get_text_from_element(OrderDetailsPageLocators.TARIFF_PRICE)
+        price = price.split()[0]
+        return price
 
     @allure.step("Get price from details")
     def get_price_from_details(self):
         """Get the price shown in the details section"""
-        return self.get_text_from_element(OrderDetailsPageLocators.PRICE_IN_DETAILS)
+        price = self.get_text_from_element(OrderDetailsPageLocators.PRICE_IN_DETAILS)
+        price = price.split('-', 1)[1].strip()[:-1]
+        return price
 
     @allure.step("Check if tariff price matches details price")
     def check_price_consistency(self):
         """Verify that tariff price matches the price in details"""
         tariff_price = self.get_tariff_price()
         details_price = self.get_price_from_details()
-        return tariff_price in details_price or details_price in tariff_price
+        return tariff_price == details_price
 
     @allure.step("Check details window elements")
     def check_details_window_elements(self):
