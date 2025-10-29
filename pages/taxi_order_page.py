@@ -1,5 +1,7 @@
 import allure
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 from pages.base_page import BasePage
 from locators.taxi_order_page_locators import TaxiOrderPageLocators
 from test_data import TAXI_TARIFF_DESCRIPTIONS
@@ -76,8 +78,12 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check order form fields are displayed")
     def check_order_form_fields_displayed(self):
         """Check that all order form fields are visible"""
+        # Check phone field with visibility wait
         self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)
-        self.find_element_with_wait(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD)
+
+        # Check payment method with presence wait (not visibility)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD))
+
         fields = [
             TaxiOrderPageLocators.PHONE_FIELD,
             TaxiOrderPageLocators.PAYMENT_METHOD_FIELD,
