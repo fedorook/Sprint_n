@@ -81,6 +81,7 @@ class TestTaxiOrderFullFlow:
 
         with allure.step("Get price before order"):
             price_before_order = order_details_page.get_tariff_price()
+            print(f"DEBUG: Price before order: {price_before_order}")
 
         with allure.step("Enable laptop table checkbox"):
             order_waiting_page.click_laptop_table_checkbox()
@@ -105,6 +106,7 @@ class TestTaxiOrderFullFlow:
 
         with allure.step("Check price consistency"):
             price_in_details = order_details_page.get_price_from_details()
+            print(f"DEBUG: Price in details: {price_in_details}")
             assert price_before_order == price_in_details, f"Price in details ({price_in_details}) should match the tariff price ({price_before_order})"
 
         with allure.step("Click Cancel button"):
