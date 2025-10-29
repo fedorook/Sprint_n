@@ -78,12 +78,17 @@ class TaxiOrderPage(BasePage):
         """Check that all order form fields are visible"""
         self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)
         fields = [
-            TaxiOrderPageLocators.PHONE_FIELD,
-            TaxiOrderPageLocators.PAYMENT_METHOD_FIELD,
-            TaxiOrderPageLocators.COMMENT_FIELD,
-            TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD
+            ("PHONE_FIELD", TaxiOrderPageLocators.PHONE_FIELD),
+            ("PAYMENT_METHOD_FIELD", TaxiOrderPageLocators.PAYMENT_METHOD_FIELD),
+            ("COMMENT_FIELD", TaxiOrderPageLocators.COMMENT_FIELD),
+            ("ORDER_REQUIREMENTS_FIELD", TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD)
         ]
-        return all(self.is_element_displayed(field) for field in fields)
+        results = []
+        for field_name, field_locator in fields:
+            is_displayed = self.is_element_displayed(field_locator)
+            print(f"DEBUG: {field_name} is displayed: {is_displayed}")
+            results.append(is_displayed)
+        return all(results)
 
     @allure.step("Click order button")
     def click_order_button(self):
