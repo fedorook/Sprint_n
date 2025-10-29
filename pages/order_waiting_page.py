@@ -27,6 +27,8 @@ class OrderWaitingPage(BasePage):
             OrderWaitingPageLocators.DRIVER_AVATAR,
             OrderWaitingPageLocators.DRIVER_RATING
         ]
+        for element in elements:
+            self.find_element_with_wait(element)
         return all(self.is_element_displayed(element) for element in elements)
 
     @allure.step("Click laptop table checkbox")
