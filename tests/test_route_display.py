@@ -1,5 +1,4 @@
 import allure
-from test_data import URL
 
 
 @allure.epic("Yandex Routes Testing")
@@ -11,7 +10,7 @@ class TestRouteDisplay:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_check_route_points_visibility(self, driver, main_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()

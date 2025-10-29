@@ -1,6 +1,6 @@
 import allure
 import pytest
-from test_data import URL, TAXI_TARIFF_DESCRIPTIONS
+from test_data import TAXI_TARIFF_DESCRIPTIONS
 
 
 @allure.epic("Yandex Routes Testing")
@@ -12,7 +12,7 @@ class TestTaxiOrderFullFlow:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_taxi_tariffs_display(self, driver, main_page, route_page, taxi_order_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -35,7 +35,7 @@ class TestTaxiOrderFullFlow:
     @allure.severity(allure.severity_level.NORMAL)
     def test_tariff_descriptions(self, driver, main_page, route_page, taxi_order_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses and open taxi order form"):
             main_page.enter_different_addresses()
@@ -54,7 +54,7 @@ class TestTaxiOrderFullFlow:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_order_form_fields(self, driver, main_page, route_page, taxi_order_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses and open taxi order form"):
             main_page.enter_different_addresses()
@@ -69,7 +69,7 @@ class TestTaxiOrderFullFlow:
     @allure.severity(allure.severity_level.BLOCKER)
     def test_full_taxi_order_scenario(self, driver, main_page, route_page, taxi_order_page, order_waiting_page, order_details_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses and open taxi order form"):
             main_page.enter_different_addresses()
@@ -115,7 +115,7 @@ class TestTaxiOrderFullFlow:
     @allure.severity(allure.severity_level.NORMAL)
     def test_cancel_button_closes_window(self, driver, main_page, route_page, taxi_order_page, order_waiting_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Complete order flow to waiting window"):
             main_page.enter_different_addresses()

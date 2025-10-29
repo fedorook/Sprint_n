@@ -1,6 +1,5 @@
 import allure
 import pytest
-from test_data import URL
 
 
 @allure.epic("Yandex Routes Testing")
@@ -12,7 +11,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_route_tab_switching_optimal_fast(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -43,7 +42,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.NORMAL)
     def test_price_duration_recalculation(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -68,7 +67,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.NORMAL)
     def test_active_tab_change_to_custom(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -87,7 +86,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_custom_tab_transportation_types(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -103,7 +102,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_call_taxi_button_fast_route(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()
@@ -119,7 +118,7 @@ class TestTaxiOrderPreparation:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_book_button_drive_custom_route(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses"):
             main_page.enter_different_addresses()

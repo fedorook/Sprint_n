@@ -1,9 +1,15 @@
 import allure
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
+from test_data import URL
 
 
 class MainPage(BasePage):
+
+    @allure.step("Open Yandex Routes application")
+    def open_yandex_routes(self):
+        """Navigate to Yandex Routes main page"""
+        self.go_to_url(URL)
 
     @allure.step("Check if route points are displayed on map")
     def check_route_points_displayed(self):

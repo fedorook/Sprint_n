@@ -1,5 +1,4 @@
 import allure
-from test_data import URL
 from locators.route_page_locators import RoutePageLocators
 from locators.main_page_locators import MainPageLocators
 
@@ -13,7 +12,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.CRITICAL)
     def test_route_selection_block_different_addresses(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -26,7 +25,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_route_tabs_visibility_different_addresses(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -39,7 +38,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_transportation_types_visibility(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -55,7 +54,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_call_taxi_button_visibility(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -68,7 +67,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_book_button_visibility(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -81,7 +80,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_same_address_route_text(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter same address in both 'From' and 'To' fields"):
             main_page.enter_same_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
@@ -94,7 +93,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_route_price_visibility_different_addresses(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
@@ -107,7 +106,7 @@ class TestRouteSelectionBlock:
     @allure.severity(allure.severity_level.NORMAL)
     def test_route_duration_visibility_different_addresses(self, driver, main_page, route_page):
         with allure.step("Navigate to Yandex Routes page"):
-            driver.get(URL)
+            main_page.open_yandex_routes()
 
         with allure.step("Enter different addresses in 'From' and 'To' fields"):
             main_page.enter_different_addresses()
