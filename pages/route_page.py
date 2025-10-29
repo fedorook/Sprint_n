@@ -8,23 +8,18 @@ class RoutePage(BasePage):
     @allure.step("Check if route selection block is displayed")
     def check_route_selection_block_displayed(self):
         """Check that route selection block appears"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.OPTIMAL_TAB, 10)
-            return (self.is_element_displayed(RoutePageLocators.OPTIMAL_TAB) and
-                    self.is_element_displayed(RoutePageLocators.FAST_TAB) and
-                    self.is_element_displayed(RoutePageLocators.CUSTOM_TAB))
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.OPTIMAL_TAB)
+        return (self.is_element_displayed(RoutePageLocators.OPTIMAL_TAB) and
+                self.is_element_displayed(RoutePageLocators.FAST_TAB) and
+                self.is_element_displayed(RoutePageLocators.CUSTOM_TAB))
 
     @allure.step("Check same address route text")
     def check_same_address_route_text(self):
         """Check that 'Авто Бесплатно' and 'В пути 0 мин.' are displayed"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.FREE_AUTO_TEXT, 10)
-            self.wait_for_element_extended(RoutePageLocators.ZERO_MINUTES_TEXT, 10)
-            return True
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.FREE_AUTO_TEXT)
+        self.find_element_with_wait(RoutePageLocators.ZERO_MINUTES_TEXT)
+        return (self.is_element_displayed(RoutePageLocators.FREE_AUTO_TEXT) and
+                self.is_element_displayed(RoutePageLocators.ZERO_MINUTES_TEXT))
 
     @allure.step("Click on route type tab")
     def click_route_type(self, route_type):
@@ -46,26 +41,20 @@ class RoutePage(BasePage):
     @allure.step("Check transportation types are active")
     def check_transportation_types_active(self):
         """Check that all transportation icons are displayed when Custom tab is selected"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.CAR_ICON, 10)
-            return (self.is_element_displayed(RoutePageLocators.CAR_ICON) and
-                    self.is_element_displayed(RoutePageLocators.WALK_ICON) and
-                    self.is_element_displayed(RoutePageLocators.TAXI_ICON_ACTIVE) and
-                    self.is_element_displayed(RoutePageLocators.BIKE_ICON) and
-                    self.is_element_displayed(RoutePageLocators.SCOOTER_ICON) and
-                    self.is_element_displayed(RoutePageLocators.DRIVE_ICON))
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.CAR_ICON)
+        return (self.is_element_displayed(RoutePageLocators.CAR_ICON) and
+                self.is_element_displayed(RoutePageLocators.WALK_ICON) and
+                self.is_element_displayed(RoutePageLocators.TAXI_ICON_ACTIVE) and
+                self.is_element_displayed(RoutePageLocators.BIKE_ICON) and
+                self.is_element_displayed(RoutePageLocators.SCOOTER_ICON) and
+                self.is_element_displayed(RoutePageLocators.DRIVE_ICON))
 
     @allure.step("Check Call Taxi button is active")
     def check_call_taxi_button_active(self):
         """Check that Call Taxi button is displayed and clickable"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.CALL_TAXI_BUTTON, 10)
-            return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
-                    self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.CALL_TAXI_BUTTON)
+        return (self.is_element_displayed(RoutePageLocators.CALL_TAXI_BUTTON) and
+                self.check_element_is_clickable(RoutePageLocators.CALL_TAXI_BUTTON))
 
     @allure.step("Click Drive transportation option")
     def click_drive_option(self):
@@ -98,17 +87,11 @@ class RoutePage(BasePage):
     @allure.step("Check route price visibility")
     def check_route_price_visibility(self):
         """Check that route price is displayed"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.PRICE, 10)
-            return self.is_element_displayed(RoutePageLocators.PRICE)
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.PRICE)
+        return self.is_element_displayed(RoutePageLocators.PRICE)
 
     @allure.step("Check route duration visibility")
     def check_route_duration_visibility(self):
         """Check that route duration is displayed"""
-        try:
-            self.wait_for_element_extended(RoutePageLocators.DURATION, 10)
-            return self.is_element_displayed(RoutePageLocators.DURATION)
-        except:
-            return False
+        self.find_element_with_wait(RoutePageLocators.DURATION)
+        return self.is_element_displayed(RoutePageLocators.DURATION)
