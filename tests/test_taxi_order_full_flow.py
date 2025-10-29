@@ -107,8 +107,7 @@ class TestTaxiOrderFullFlow:
             order_details_page.click_cancel_button()
 
         with allure.step("Check that details window closed"):
-            # This would need implementation to check if details window disappeared
-            assert True, "Details window should close after clicking Cancel"
+            assert not order_details_page.check_details_window_elements(), "Details window should close after clicking Cancel"
 
     @pytest.mark.xfail(reason="Cancel button does not work in waiting window")
     @allure.title("Check window closes after clicking Cancel button")
