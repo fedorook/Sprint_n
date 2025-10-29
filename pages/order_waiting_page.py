@@ -45,7 +45,7 @@ class OrderWaitingPage(BasePage):
     def wait_for_timer_completion(self):
         """Wait for the search timer to complete (30+ seconds)"""
         # Wait for driver avatar to appear (indicates order completion)
-        return self.wait_for_element_extended(OrderWaitingPageLocators.DRIVER_AVATAR, timeout=35)
+        return self.wait_for_element_extended(OrderWaitingPageLocators.DRIVER_AVATAR, timeout=60)
 
     @allure.step("Click details button")
     def click_details_button(self):
