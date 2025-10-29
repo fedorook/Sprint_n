@@ -35,7 +35,10 @@ class BasePage:
 
     @allure.step("Check if element is displayed")
     def is_element_displayed(self, locator):
-        return self.driver.find_element(*locator).is_displayed()
+        try:
+            return self.driver.find_element(*locator).is_displayed()
+        except:
+            return False
 
     @allure.step("Check if element is not visible")
     def wait_for_element_to_disappear(self, locator):
