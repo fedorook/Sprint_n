@@ -22,14 +22,19 @@ class OrderWaitingPage(BasePage):
     def check_order_completion_elements(self):
         """Check all elements in the completed order window"""
         elements = [
-            OrderWaitingPageLocators.CAR_IMAGE,
-            OrderWaitingPageLocators.DRIVER_NAME,
-            OrderWaitingPageLocators.DRIVER_AVATAR,
-            OrderWaitingPageLocators.DRIVER_RATING
+            ("CAR_IMAGE", OrderWaitingPageLocators.CAR_IMAGE),
+            ("DRIVER_NAME", OrderWaitingPageLocators.DRIVER_NAME),
+            ("DRIVER_AVATAR", OrderWaitingPageLocators.DRIVER_AVATAR),
+            ("DRIVER_RATING", OrderWaitingPageLocators.DRIVER_RATING)
         ]
-        for element in elements:
-            self.find_element_with_wait(element)
-        return all(self.is_element_displayed(element) for element in elements)
+        for name, element in elements:
+            try:
+                self.find_element_with_wait(element)
+                print(f"✓ Found {name}")
+            except Exception as e:
+                print(f"✗ Failed to find {name}: {e}")
+                return False
+        return all(self.is_element_displayed(element) for _, element in elements)
 
     @allure.step("Click laptop table checkbox")
     def click_laptop_table_checkbox(self):
