@@ -14,9 +14,12 @@ class MainPage(BasePage):
     @allure.step("Check if route points are displayed on map")
     def check_route_points_displayed(self):
         """Check that both A and B points are visible on the map"""
-        a_point_displayed = self.is_element_displayed(MainPageLocators.A_POINT)
-        b_point_displayed = self.is_element_displayed(MainPageLocators.B_POINT)
-        return a_point_displayed and b_point_displayed
+        try:
+            self.wait_for_element_extended(MainPageLocators.A_POINT, 15)
+            self.wait_for_element_extended(MainPageLocators.B_POINT, 15)
+            return True
+        except:
+            return False
 
     @allure.step("Enter addresses for route")
     def enter_route_addresses(self, from_address, to_address):
@@ -33,3 +36,4 @@ class MainPage(BasePage):
     def enter_same_addresses(self):
         """Enter same preset address in both from and to fields"""
         super().enter_same_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+

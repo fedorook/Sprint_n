@@ -1,6 +1,4 @@
 import allure
-from locators.route_page_locators import RoutePageLocators
-from locators.main_page_locators import MainPageLocators
 
 
 @allure.epic("Yandex Routes Testing")
@@ -83,7 +81,7 @@ class TestRouteSelectionBlock:
             main_page.open_yandex_routes()
 
         with allure.step("Enter same address in both 'From' and 'To' fields"):
-            main_page.enter_same_addresses(MainPageLocators.FROM_FIELD, MainPageLocators.TO_FIELD)
+            main_page.enter_same_addresses()
 
         with allure.step("Check that same address route text is displayed"):
             assert route_page.check_same_address_route_text(), "Should display 'Авто Бесплатно' and 'В пути 0 мин.' for same addresses"
