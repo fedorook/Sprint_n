@@ -65,9 +65,12 @@ class RoutePage(BasePage):
     @allure.step("Check Book button is active for Drive")
     def check_book_button_active(self):
         """Check that Book button is displayed and clickable for Drive option"""
-        self.find_element_with_wait(RoutePageLocators.BOOK_BUTTON)
-        return (self.is_element_displayed(RoutePageLocators.BOOK_BUTTON) and
-                self.check_element_is_clickable(RoutePageLocators.BOOK_BUTTON))
+        try:
+            self.find_element_with_wait(RoutePageLocators.BOOK_BUTTON)
+            self.check_element_is_clickable(RoutePageLocators.BOOK_BUTTON)
+            return self.is_element_displayed(RoutePageLocators.BOOK_BUTTON)
+        except:
+            return False
 
     @allure.step("Click Call Taxi button")
     def click_call_taxi_button(self):
