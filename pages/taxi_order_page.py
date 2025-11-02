@@ -78,16 +78,14 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check order form fields are displayed")
     def check_order_form_fields_displayed(self):
         """Check that all order form fields are visible"""
-        # Wait for taxi order page to fully load by waiting for any tariff to appear
-        self.find_element_with_wait(TaxiOrderPageLocators.WORKING_TARIFF)
-
-        phone = self.is_element_displayed(TaxiOrderPageLocators.PHONE_FIELD)
-        payment = self.is_element_displayed(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD)
-        comment = self.is_element_displayed(TaxiOrderPageLocators.COMMENT_FIELD)
-        requirements = self.is_element_displayed(TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD)
-
-        print(f"DEBUG: phone={phone}, payment={payment}, comment={comment}, requirements={requirements}")
-        return phone and payment and comment and requirements
+        try:
+            self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)
+            self.find_element_with_wait(TaxiOrderPageLocators.PAYMENT_METHOD_FIELD)
+            self.find_element_with_wait(TaxiOrderPageLocators.COMMENT_FIELD)
+            self.find_element_with_wait(TaxiOrderPageLocators.ORDER_REQUIREMENTS_FIELD)
+            return True
+        except:
+            return False
 
     @allure.step("Click order button")
     def click_order_button(self):
