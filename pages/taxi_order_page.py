@@ -67,7 +67,7 @@ class TaxiOrderPage(BasePage):
     @allure.step("Get tariff description")
     def get_tariff_description(self):
         """Get the text from the tariff description popup"""
-        return self.get_text_from_element(TaxiOrderPageLocators.TARIFF_DESCRIPTION)
+        return self.get_text_from_element(tuple(TaxiOrderPageLocators.TARIFF_DESCRIPTION))
 
     @allure.step("Check tariff description matches expected")
     def check_tariff_description(self, tariff_name, description):
