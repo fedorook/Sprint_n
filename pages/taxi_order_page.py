@@ -78,11 +78,7 @@ class TaxiOrderPage(BasePage):
     @allure.step("Check order form fields are displayed")
     def check_order_form_fields_displayed(self):
         """Check that all order form fields are visible"""
-        # Wait for tariffs to load first
         self.find_element_with_wait(TaxiOrderPageLocators.WORKING_TARIFF)
-
-        # DEBUG: Pause for manual inspection
-        input("DEBUG: Press Enter to continue after checking DOM...")
 
         try:
             self.find_element_with_wait(TaxiOrderPageLocators.PHONE_FIELD)

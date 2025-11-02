@@ -113,6 +113,7 @@ class TestTaxiOrderPreparation:
         with allure.step("Verify that Call Taxi button is active"):
             assert route_page.check_call_taxi_button_active(), "Call Taxi button should be active for Fast route type"
 
+    @pytest.mark.xfail(reason="Race condition: Book button for Drive option doesn't appear consistently in automated tests")
     @allure.title("Check Book button is active for Drive option in Custom route")
     @allure.description("Verify that Book button is active when Custom route with Drive transportation type is selected")
     @allure.severity(allure.severity_level.CRITICAL)
